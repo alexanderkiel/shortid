@@ -31,5 +31,3 @@
   [n]
   {:pre [(< 0 n 7)]}
   (int-to-base62 (.nextInt r (inc (max-int n)))))
-
-(generate 5)

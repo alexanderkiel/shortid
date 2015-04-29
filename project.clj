@@ -1,5 +1,4 @@
-(defproject
-  shortid "0.1-SNAPSHOT"
+(defproject shortid "0.1-SNAPSHOT"
   :description "Generates short base62 encoded identifiers."
   :url "http://example.com/FIXME"
   :license {:name "Eclipse Public License"
