@@ -1,6 +1,6 @@
 # Short Id
 
-Generates short base62 encoded identifiers.
+Generates short random base62 encoded identifiers.
 
 ## Usage
 
