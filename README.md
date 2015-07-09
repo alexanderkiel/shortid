@@ -2,6 +2,14 @@
 
 Generates short random base62 encoded identifiers.
 
+## Install
+
+To install, just add the following to your project dependencies:
+
+```clojure
+[org.clojars.akiel/shortid "0.1"]
+```
+
 ## Usage
 
     (shortid.core/generate 5) -> "iCK15"
