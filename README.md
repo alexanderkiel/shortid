@@ -12,7 +12,10 @@ To install, just add the following to your project dependencies:
 
 ## Usage
 
-    (shortid.core/generate 5) -> "iCK15"
+```clojure
+(require 'shortid.core)
+(shortid.core/generate 5)
+```
 
 ## License
 
