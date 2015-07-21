@@ -1,7 +1,10 @@
 (ns shortid.core
-  (:import (java.security SecureRandom)))
+  (:import [java.security SecureRandom]))
 
-(def alphabet "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
+(set! *warn-on-reflection* true)
+
+(def ^String alphabet
+  "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
 
 (defn int-to-base62
   "Converts a positive integer to a base62 string."
@@ -21,7 +24,7 @@
        [0 1]
        (reverse s)))))
 
-(def r (SecureRandom.))
+(def ^SecureRandom r (SecureRandom.))
 
 (defn- max-int "The maximum integer encodable with n chars." [n]
   (apply + (take n (iterate #(* 62 %) 61))))
