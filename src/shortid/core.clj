@@ -32,5 +32,5 @@
 (defn generate
   "Generates an up to n character long base62 secure random string."
   [n]
-  {:pre [(< 0 n 7)]}
+  {:pre [(< 0 n 6)]}
   (int-to-base62 (.nextInt r (inc (max-int n)))))

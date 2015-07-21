@@ -9,5 +9,5 @@
     (= n (base62-to-int (int-to-base62 n)))))
 
 (defspec generate-prop 1000
-  (prop/for-all [n (gen/choose 1 6)]
+  (prop/for-all [n (gen/choose 1 5)]
     (<= (count (generate n)) n)))
