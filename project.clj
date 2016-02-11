@@ -1,4 +1,4 @@
-(defproject org.clojars.akiel/shortid "0.2-SNAPSHOT"
+(defproject org.clojars.akiel/shortid "0.1.2"
   :description "Generates short base62 encoded identifiers."
   :url "https://github.com/alexanderkiel/shortid"
   :license {:name "Eclipse Public License"

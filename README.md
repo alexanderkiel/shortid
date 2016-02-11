@@ -9,7 +9,7 @@ Generates short random base62 encoded identifiers.
 To install, just add the following to your project dependencies:
 
 ```clojure
-[org.clojars.akiel/shortid "0.1.1"]
+[org.clojars.akiel/shortid "0.1.2"]
 ```
 
 ## Usage
