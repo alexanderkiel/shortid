@@ -20,7 +20,8 @@
    (first
      (reduce
        (fn [[n factor] c]
-         [(+ n (* factor (.indexOf alphabet (str c)))) (* 62 factor)])
+         [(+ n (* factor (.indexOf alphabet (str c))))
+          (unchecked-multiply 62 (long factor))])
        [0 1]
        (reverse s)))))
 
