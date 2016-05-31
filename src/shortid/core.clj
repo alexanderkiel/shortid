@@ -1,10 +1,21 @@
 (ns shortid.core
+  (:require [clojure.spec :as s])
   (:import [java.security SecureRandom]))
 
 (set! *warn-on-reflection* true)
 
 (def ^String alphabet
   "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
+
+(s/def ::non-neg-int (s/and integer? #(not (neg? %))))
+
+(declare int-to-base62 base62-to-int)
+
+(s/fdef int-to-base62
+  :args (s/cat :n ::non-neg-int :accum (s/? string?))
+  :ret string?
+  :fn #(or (some? (-> % :args :accum))
+           (= (-> % :args :n) (-> % :ret base62-to-int))))
 
 (defn int-to-base62
   "Converts an non-negative integer to a base62 string."
@@ -27,11 +38,19 @@
 
 (def ^SecureRandom r (SecureRandom.))
 
+(defn- int-between [start end]
+  (s/with-gen (s/and integer? #(<= start % end))
+              #(s/gen (set (range start (inc end))))))
+
+(s/fdef generate
+  :args (s/cat :n (int-between 1 5))
+  :ret string?
+  :fn #(<= (-> % :ret count) (-> % :args :n)))
+
 (defn- max-int "The maximum integer encodable with n chars." [n]
   (apply + (take n (iterate #(* 62 %) 61))))
 
 (defn generate
   "Generates an up to n character long base62 secure random string."
   [n]
-  {:pre [(< 0 n 6)]}
   (int-to-base62 (.nextInt r (inc (max-int n)))))
