@@ -7,7 +7,7 @@
   "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
 
 (defn int-to-base62
-  "Converts a positive integer to a base62 string."
+  "Converts an non-negative integer to a base62 string."
   ([n] (int-to-base62 (quot n 62) (str (nth alphabet (rem n 62)))))
   ([n accum]
    (if (zero? n)
@@ -15,7 +15,7 @@
      (recur (quot n 62) (str (nth alphabet (rem n 62)) accum)))))
 
 (defn base62-to-int
-  "Converts a base62 string to a positive integer."
+  "Converts a base62 string to an non-negative integer."
   ([s]
    (first
      (reduce

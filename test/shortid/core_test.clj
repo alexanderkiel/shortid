@@ -9,8 +9,16 @@
   (prop/for-all [n gen/pos-int]
     (= n (base62-to-int (int-to-base62 n)))))
 
-(deftest base62-long-max-value
-  (= Long/MAX_VALUE (base62-to-int (int-to-base62 Long/MAX_VALUE))))
+(deftest int-to-base62-test
+  (testing "special values"
+    (are [n] (= n (base62-to-int (int-to-base62 n)))
+      0
+      Long/MAX_VALUE)))
+
+(deftest base62-to-int-test
+  (testing "special values"
+    (are [s] (= s (int-to-base62 (base62-to-int s)))
+      "0")))
 
 (defspec generate-prop 1000
   (prop/for-all [n (gen/choose 1 5)]
